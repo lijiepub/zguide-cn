@@ -1,10 +1,9 @@
-
 # ZMQ 指南
 
 **作者: Pieter Hintjens <ph@imatix.com>, CEO iMatix Corporation.**  
 **翻译: 张吉 <jizhang@anjuke.com>, 安居客集团 好租网工程师**
 
-With thanks to Bill Desmarais, Brian Dorsey, CAF, Daniel Lin, Eric Desgranges, Gonzalo Diethelm, Guido Goldstein, Hunter Ford, Kamil Shakirov, Martin Sustrik, Mike Castleman, Naveen Chawla, Nicola Peduzzi, Oliver Smith, Olivier Chamoux, Peter Alexander, Pierre Rouleau, Randy Dryburgh, John Unwin, Alex Thomas, Mihail Minkov, Jeremy Avnet, Michael Compton, Kamil Kisiel, Mark Kharitonov, Guillaume Aubert, Ian Barber, Mike Sheridan, Faruk Akgul, Oleg Sidorov, Lev Givon, Allister MacLeod, Alexander D'Archangel, Andreas Hoelzlwimmer, Han Holl, Robert G. Jakabosky, Felipe Cruz, Marcus McCurdy, Mikhail Kulemin, Dr. Gergő Érdi, Pavel Zhukov, Alexander Else, Giovanni Ruggiero, Rick "Technoweenie", Daniel Lundin, Dave Hoover, Simon Jefford, Benjamin Peterson, Justin Case, Devon Weller, Richard Smith, Alexander Morland, Wadim Grasza, Michael Jakl, and Zed Shaw for their contributions, and to Stathis Sideris for [Ditaa](http://www.ditaa.org).
+With thanks to Bill Desmarais, Brian Dorsey, CAF, Daniel Lin, Eric Desgranges, Gonzalo Diethelm, Guido Goldstein, Hunter Ford, Kamil Shakirov, Martin Sustrik, Mike Castleman, Naveen Chawla, Nicola Peduzzi, Oliver Smith, Olivier Chamoux, Peter Alexander, Pierre Rouleau, Randy Dryburgh, John Unwin, Alex Thomas, Mihail Minkov, Jeremy Avnet, Michael Compton, Kamil Kisiel, Mark Kharitonov, Guillaume Aubert, Ian Barber, Mike Sheridan, Faruk Akgul, Oleg Sidorov, Lev Givon, Allister MacLeod, Alexander?D'Archangel, Andreas Hoelzlwimmer, Han Holl, Robert G. Jakabosky, Felipe Cruz, Marcus McCurdy, Mikhail Kulemin, Dr. Gerg? érdi, Pavel Zhukov, Alexander Else, Giovanni Ruggiero, Rick "Technoweenie", Daniel Lundin, Dave Hoover, Simon Jefford, Benjamin Peterson, Justin Case, Devon Weller, Richard Smith, Alexander Morland, Wadim Grasza, Michael Jakl, and Zed Shaw for their contributions, and to Stathis Sideris for [Ditaa](http://www.ditaa.org).
 
 Please use the [issue tracker](https://github.com/imatix/zguide/issues) for all comments and errata. This version covers the latest stable release of 0MQ and was published on Mon 10 October, 2011.
 
@@ -28,7 +27,7 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Licen
 
 如果你曾和线程、协议、或网络打过交道，你会觉得我上面的话像是天方夜谭。因为在实际应用过程中，只是连接几个程序或网络就已经非常困难和麻烦了。数以兆计的节点？那真是无法想象的。现今只有资金雄厚的企业才能负担得起这种软件和服务。
 
-当今世界的网络结构已经远远超越了我们自身的驾驭能力。十九世纪八十年代的软件危机，弗莱德•布鲁克斯曾说过，这个世上[没有银弹](http://en.wikipedia.org/wiki/No_Silver_Bullet
+当今世界的网络结构已经远远超越了我们自身的驾驭能力。十九世纪八十年代的软件危机，弗莱德?布鲁克斯曾说过，这个世上[没有银弹](http://en.wikipedia.org/wiki/No_Silver_Bullet
 )。后来，免费和开源解决了这次软件危机，让我们能够高效地分享知识。如今，我们又面临一次新的软件危机，只不过我们谈论得不多。只有那些大型的、富足的企业才有财力建立高度联系的应用程序。那里有云的存在，但它是私有的。我们的数据和知识正在从我们的个人电脑中消失，流入云端，无法获得或与其竞争。是谁坐拥我们的社交网络？这真像一次巨型主机的革命。
 
 我们暂且不谈其中的政治因素，光那些就可以另外出本书了。目前的现状是，虽然互联网能够让千万个程序相连，但我们之中的大多数却无法做到这些。这样一来，那些真正有趣的大型问题（如健康、教育、经济、交通等领域），仍然无法解决。我们没有能力将代码连接起来，也就不能像大脑中的神经元一样处理那些大规模的问题。
@@ -43,7 +42,7 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Licen
 
 ### ZMQ简介
 
-ZMQ（ØMQ、ZeroMQ, 0MQ）看起来像是一套嵌入式的网络链接库，但工作起来更像是一个并发式的框架。它提供的套接字可以在多种协议中传输消息，如线程间、进程间、TCP、广播等。你可以使用套接字构建多对多的连接模式，如扇出、发布-订阅、任务分发、请求-应答等。ZMQ的快速足以胜任集群应用产品。它的异步I/O机制让你能够构建多核应用程序，完成异步消息处理任务。ZMQ有着多语言支持，并能在几乎所有的操作系统上运行。ZMQ是[iMatix][]公司的产品，以LGPL开源协议发布。
+ZMQ（?MQ、ZeroMQ, 0MQ）看起来像是一套嵌入式的网络链接库，但工作起来更像是一个并发式的框架。它提供的套接字可以在多种协议中传输消息，如线程间、进程间、TCP、广播等。你可以使用套接字构建多对多的连接模式，如扇出、发布-订阅、任务分发、请求-应答等。ZMQ的快速足以胜任集群应用产品。它的异步I/O机制让你能够构建多核应用程序，完成异步消息处理任务。ZMQ有着多语言支持，并能在几乎所有的操作系统上运行。ZMQ是[iMatix][]公司的产品，以LGPL开源协议发布。
 
 ### 需要具备的知识
 
@@ -114,7 +113,7 @@ int main (void)
 }
 ```
 
-![1](https://github.com/haozu/zguide-cn/raw/master/images/chapter1_1.png)
+![1](https://github.com/lijiepub/zguide-cn/tree/master/images/chapter1_1.png)
 
 使用REQ-REP套接字发送和接受消息是需要遵循一定规律的。客户端首先使用zmq_send()发送消息，再用zmq_recv()接收，如此循环。如果打乱了这个顺序（如连续发送两次）则会报错。类似地，服务端必须先进行接收，后进行发送。
 
@@ -237,7 +236,7 @@ int main (void)
 
 这看起来是否太简单了？ZMQ就是这样一个东西，你往里加点儿料就能制作出一枚无穷能量的原子弹，用它来拯救世界吧！
 
-![2](https://github.com/haozu/zguide-cn/raw/master/images/chapter1_2.png)
+![2](https://github.com/lijiepub/zguide-cn/tree/master/images/chapter1_2.png)
 
 理论上你可以连接千万个客户端到这个服务端上，同时连接都没问题，程序仍会运作得很好。你可以尝试一下先打开客户端，再打开服务端，可以看到程序仍然会正常工作，想想这意味着什么。
 
@@ -263,7 +262,7 @@ socket.send ("Hello")
 
 实际发送的消息是：
 
-![3](https://github.com/haozu/zguide-cn/raw/master/images/chapter1_3.png)
+![3](https://github.com/lijiepub/zguide-cn/tree/master/images/chapter1_3.png)
 
 如果你从C语言中读取该消息，你会读到一个类似于字符串的内容，甚至它可能就是一个字符串（第六位在内存中正好是一个空字符），但是这并不合适。这样一来，客户端和服务端对字符串的定义就不统一了，你会得到一些奇怪的结果。
 
@@ -297,7 +296,7 @@ s_recv (void *socket) {
 
 ZMQ目前有多个版本，而且仍在持续更新。如果你遇到了问题，也许这在下一个版本中已经解决了。想知道目前的ZMQ版本，你可以在程序中运行如下：
 
-**version: ØMQ version reporting in C**
+**version: ?MQ version reporting in C**
 
 ```c
 //
@@ -361,7 +360,7 @@ int main (void)
 
 这项更新服务没有开始、没有结束，就像永不消失的电波一样。
 
-![4](https://github.com/haozu/zguide-cn/raw/master/images/chapter1_4.png)
+![4](https://github.com/lijiepub/zguide-cn/tree/master/images/chapter1_4.png)
 
 下面是客户端程序，它会接受发布者的消息，只处理特定邮编标注的信息，如纽约的邮编是10001:
 
@@ -512,7 +511,7 @@ int main (void)
 }
 ```
 
-![5](https://github.com/haozu/zguide-cn/raw/master/images/chapter1_5.png)
+![5](https://github.com/lijiepub/zguide-cn/tree/master/images/chapter1_5.png)
 
 下面是worker的代码，它接受信息并延迟指定的毫秒数，并发送执行完毕的信号：
 
@@ -629,7 +628,7 @@ Total elapsed time: 1018 msec
 
 * 结果收集器的PULL套接字会均匀地从worker处收集消息，这种机制称为_公平队列_：
 
-![6](https://github.com/haozu/zguide-cn/raw/master/images/chapter1_6.png)
+![6](https://github.com/lijiepub/zguide-cn/tree/master/images/chapter1_6.png)
 
 管道模式也会出现慢连接的情况，让人误以为PUSH套接字没有进行负载均衡。如果你的程序中某个worker接收到了更多的请求，那是因为它的PULL套接字连接得比较快，从而在别的worker连接之前获取了额外的消息。
 
@@ -823,7 +822,7 @@ ZMQ应用程序的一开始总是会先创建一个上下文，并用它来创�
 
 我们可以找一个开源软件来做例子，如[Hadoop Zookeeper](http://hadoop.apache.org/zookeeper/)，看一下它的C语言API源码，[src/c/src/zookeeper.c]([http://github.com/apache/zookeeper/blob/trunk/src/c/src/zookeeper.c src/c/src/zookeeper.c)。这段代码大约有3200行，没有注释，实现了一个C/S网络通信协议。它工作起来很高效，因为使用了poll()来代替select()。但是，Zookeeper应该被抽象出来，作为一种通用的消息通信层，并加以详细的注释。像这样的模块应该得到最大程度上的复用，而不是重复地制造轮子。
 
-![7](https://github.com/haozu/zguide-cn/raw/master/images/chapter1_7.png)
+![7](https://github.com/lijiepub/zguide-cn/tree/master/images/chapter1_7.png)
 
 但是，如何编写这样一个可复用的消息层呢？为什么长久以来人们宁愿在自己的代码中重复书写控制原始TCP套接字的代码，而不愿编写这样一个公共库呢？
 
@@ -835,7 +834,7 @@ ZMQ应用程序的一开始总是会先创建一个上下文，并用它来创�
 
 这样一来，中小应用程序的开发者们就无计可施了。他们只能设法避免编写网络应用程序，转而编写那些不需要扩展的程序；或者可以使用原始的方式进行网络编程，但编写的软件会非常脆弱和复杂，难以维护；亦或者他们选择一种消息通信产品，虽然能够开发出扩展性强的应用程序，但需要支付高昂的代价。似乎没有一种选择是合理的，这也是为什么在上个世纪消息系统会成为一个广泛的问题。
 
-![8](https://github.com/haozu/zguide-cn/raw/master/images/chapter1_8.png)
+![8](https://github.com/lijiepub/zguide-cn/tree/master/images/chapter1_8.png)
 
 我们真正需要的是这样一种消息软件，它能够做大型消息软件所能做的一切，但使用起来又非常简单，成本很低，可以用到所有的应用程序中，没有任何依赖条件。因为没有了额外的模块，就降低了出错的概率。这种软件需要能够在所有的操作系统上运行，并能支持所有的编程语言。
 
@@ -889,7 +888,7 @@ wuclient 56789 &
 
 在编写ZMQ应用程序时，你遇到最多的问题可能是无法获得消息。下面有一个问题解决路线图，列举了最基本的出错原因。不用担心其中的某些术语你没有见过，在后面的几章里都会讲到。
 
-![9](https://github.com/haozu/zguide-cn/raw/master/images/chapter1_9.png)
+![9](https://github.com/lijiepub/zguide-cn/tree/master/images/chapter1_9.png)
 
 如果ZMQ在你的应用程序中扮演非常重要的角色，那你可能就需要好好计划一下了。首先，创建一个原型，用以测试设计方案的可行性。采取一些压力测试的手段，确保它足够的健壮。其次，主攻测试代码，也就是编写测试框架，保证有足够的电力供应和时间，来进行高强度的测试。理想状态下，应该由一个团队编写程序，另一个团队负责击垮它。最后，让你的公司及时[联系iMatix](http://www.imatix.com/contact)，获得技术上的支持。
 
